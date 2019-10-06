@@ -1,1 +1,0 @@
-sekvado.com
