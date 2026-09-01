@@ -9,31 +9,18 @@
 
 
 	.logo {
-		@include vendor('transform', 'translateX(-50%)');
+		@include vendor('align-self', 'center');
 		display: block;
 		height: auto;
-		left: 50%;
+		margin: 0 auto (_size(element-margin) * 0.75) auto;
 		max-width: 60vw;
-		position: absolute;
-		top: 3em;
 		width: 11em;
-		z-index: 2;
 
 		@include breakpoint('<=small') {
-			top: 2em;
 			width: 8.5em;
 		}
 
-		/* Short viewports: back into the flow, so it can't sit on the text. */
-		@include breakpoint('short') {
-			@include vendor('transform', 'none');
-			left: auto;
-			margin: 0 auto (_size(element-margin) * 0.75) auto;
-			position: relative;
-			top: auto;
-		}
-
-		/* When the logo is a link, the anchor is the positioned box. */
+		/* When the logo is a link, the anchor is the box that gets centred. */
 		&[href] {
 			border-bottom: none;
 		}
