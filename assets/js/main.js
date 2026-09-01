@@ -105,28 +105,43 @@
 		(function() {
 
 			// Vars.
-				var $form = document.querySelectorAll('#signup-form')[0],
-					$submit = document.querySelectorAll('#signup-form input[type="submit"]')[0],
-					$message;
+				var $form = document.querySelector('#signup-form'),
+					$submit,
+					$message,
+					endpoint;
 
-			// Bail if addEventListener isn't supported.
-				if (!('addEventListener' in $form))
+			// Bail if the form isn't on the page, or if the browser can't do a
+			// background submission. In the latter case the form posts natively to
+			// its action attribute, which is the no-JS fallback.
+				if (!$form
+				||	!('addEventListener' in $form)
+				||	typeof window.fetch !== 'function'
+				||	typeof window.FormData !== 'function')
 					return;
+
+				$submit = $form.querySelector('input[type="submit"]');
+				endpoint = $form.getAttribute('data-endpoint');
 
 			// Message.
 				$message = document.createElement('span');
 					$message.classList.add('message');
+					$message.setAttribute('role', 'status');
+					$message.setAttribute('aria-live', 'polite');
 					$form.appendChild($message);
 
-				$message._show = function(type, text) {
+				$message._show = function(type, text, autoHide) {
 
-					$message.innerHTML = text;
+					$message.classList.remove('success');
+					$message.classList.remove('failure');
+
+					$message.textContent = text;
 					$message.classList.add(type);
 					$message.classList.add('visible');
 
-					window.setTimeout(function() {
-						$message._hide();
-					}, 3000);
+					if (autoHide)
+						window.setTimeout(function() {
+							$message._hide();
+						}, 6000);
 
 				};
 
@@ -135,34 +150,44 @@
 				};
 
 			// Events.
-			// Note: If you're *not* using AJAX, get rid of this event listener.
 				$form.addEventListener('submit', function(event) {
 
 					event.stopPropagation();
 					event.preventDefault();
 
-					// Hide message.
-						$message._hide();
+					$message._hide();
+
+					// No endpoint configured yet: say so instead of claiming the
+					// address was stored. See README.md.
+						if (!endpoint
+						||	endpoint.indexOf('REPLACE_WITH') === 0) {
+							$message._show('failure', 'Sign-up isn\'t live yet. Please email support@sekvado.com.', true);
+							return;
+						}
 
 					// Disable submit.
 						$submit.disabled = true;
 
-					// Process form.
-					// Note: Doesn't actually do anything yet (other than report back with a "thank you"),
-					// but there's enough here to piece together a working AJAX submission call that does.
-						window.setTimeout(function() {
+					window.fetch(endpoint, {
+						method: 'POST',
+						headers: { 'Accept': 'application/json' },
+						body: new FormData($form)
+					})
+						.then(function(response) {
 
-							// Reset form.
-								$form.reset();
+							if (!response.ok)
+								throw new Error('HTTP ' + response.status);
 
-							// Enable submit.
-								$submit.disabled = false;
+							$form.reset();
+							$message._show('success', 'Thank you! Check your inbox to confirm.', false);
 
-							// Show message.
-								$message._show('success', 'Thank you!');
-								//$message._show('failure', 'Something went wrong. Please try again.');
-
-						}, 750);
+						})
+						.catch(function() {
+							$message._show('failure', 'Something went wrong. Please try again.', true);
+						})
+						.then(function() {
+							$submit.disabled = false;
+						});
 
 				});
 

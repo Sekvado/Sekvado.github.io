@@ -1201,3 +1201,54 @@ input, select, textarea {
 			}
 
 		}
+/* Brand & signup (Sekvado additions — mirror of assets/sass/components/_brand.scss) */
+
+	.screen-reader-text {
+		border: 0;
+		clip: rect(0 0 0 0);
+		clip-path: inset(50%);
+		height: 1px;
+		overflow: hidden;
+		position: absolute;
+		white-space: nowrap;
+		width: 1px;
+	}
+
+	#header .logo {
+		display: block;
+		height: auto;
+		margin: 0 0 1.5em 0;
+		max-width: 70vw;
+		width: 15em;
+	}
+
+		@media screen and (max-width: 736px) {
+
+			#header .logo {
+				width: 11em;
+			}
+
+		}
+
+	.consent {
+		color: rgba(255, 255, 255, 0.5);
+		font-size: 0.9em;
+		margin: 1.2em 0 0 0;
+		max-width: 34em;
+	}
+
+		.consent label {
+			line-height: 1.5em;
+		}
+
+	#footer .copyright a {
+		border-bottom: dotted 1px rgba(255, 255, 255, 0.35);
+	}
+
+	/* First background as CSS too: renders before JS runs and without JS at all. */
+	body {
+		background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url("../../images/Riding_on_road_with_trees_1920x.jpg");
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}

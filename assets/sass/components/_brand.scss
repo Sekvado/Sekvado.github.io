@@ -1,0 +1,60 @@
+///
+/// Sekvado additions on top of the Eventually template.
+/// NOTE: assets/css/main.css is not built from these sources in CI — when you
+/// change this file, mirror the change in the "Brand & signup" block at the end
+/// of assets/css/main.css (see README.md).
+///
+
+/* Brand & signup */
+
+	.screen-reader-text {
+		border: 0;
+		clip: rect(0 0 0 0);
+		clip-path: inset(50%);
+		height: 1px;
+		overflow: hidden;
+		position: absolute;
+		white-space: nowrap;
+		width: 1px;
+	}
+
+	#header {
+		.logo {
+			display: block;
+			height: auto;
+			margin: 0 0 (_size(element-margin) * 0.75) 0;
+			max-width: 70vw;
+			width: 15em;
+
+			@include breakpoint('<=small') {
+				width: 11em;
+			}
+		}
+	}
+
+	.consent {
+		color: _palette(fg-light);
+		font-size: 0.9em;
+		margin: (_size(element-margin) * 0.6) 0 0 0;
+		max-width: 34em;
+
+		label {
+			line-height: 1.5em;
+		}
+	}
+
+	#footer {
+		.copyright {
+			a {
+				border-bottom: dotted 1px _palette(border);
+			}
+		}
+	}
+
+	/* First background as CSS too: renders before JS runs and without JS at all. */
+	body {
+		background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('../../images/Riding_on_road_with_trees_1920x.jpg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
