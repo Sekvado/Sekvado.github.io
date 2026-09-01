@@ -1265,13 +1265,6 @@ input, select, textarea {
 		border-bottom: dotted 1px rgba(255, 255, 255, 0.35);
 	}
 
-	/* First background as CSS too: renders before JS runs and without JS at all. */
-	body {
-		background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url("../../images/Riding_on_road_with_trees_1920x.jpg");
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: cover;
-	}
 
 	/* Inline SVG icons replace Font Awesome. */
 	.icon {

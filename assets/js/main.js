@@ -52,17 +52,29 @@
 					k, v;
 
 			// Create BG wrapper, BGs.
-				$wrapper = document.createElement('div');
+			// The first slide is already in the markup so it paints before this
+			// runs; reuse it rather than layering a second copy on top of it,
+			// which would drift out of register as the slideshow pans.
+				$wrapper = document.querySelector('#bg');
+
+				if (!$wrapper) {
+					$wrapper = document.createElement('div');
 					$wrapper.id = 'bg';
 					$body.appendChild($wrapper);
+				}
 
 				for (k in settings.images) {
 
-					// Create BG.
-						$bg = document.createElement('div');
-							$bg.style.backgroundImage = 'url("' + k + '")';
-							$bg.style.backgroundPosition = settings.images[k];
+					// Reuse an existing BG, or create one.
+						$bg = $wrapper.children[$bgs.length];
+
+						if (!$bg) {
+							$bg = document.createElement('div');
 							$wrapper.appendChild($bg);
+						}
+
+						$bg.style.backgroundImage = 'url("' + k + '")';
+						$bg.style.backgroundPosition = settings.images[k];
 
 					// Add it to array.
 						$bgs.push($bg);

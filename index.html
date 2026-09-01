@@ -30,8 +30,15 @@
 		<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/outfit-latin-wght-normal.woff2" crossorigin />
 		<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/manrope-latin-wght-normal.woff2" crossorigin />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><style>body.is-preload #bg { opacity: 1; }</style></noscript>
 	</head>
 	<body class="is-preload">
+
+		<!-- First slide is in the markup so it paints before JS runs; main.js
+		     reuses this element instead of creating a second copy. -->
+			<div id="bg">
+				<div class="visible top" style="background-image: url('images/Riding_on_road_with_trees_1920x.jpg'); background-position: center;"></div>
+			</div>
 
 		<!-- Header -->
 			<header id="header">
