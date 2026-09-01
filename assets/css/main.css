@@ -1036,7 +1036,6 @@ button:disabled,
 #header p {
   font-size: 1.15em;
   line-height: 1.5em;
-  max-width: 40em;
 }
 #header a {
   color: inherit;
