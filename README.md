@@ -18,8 +18,8 @@ Pages deploys it.
 
 The template underneath is [Eventually by HTML5 UP](https://html5up.net), which
 is CC BY 3.0: free to use as long as the credit stays in the footer, or you buy
-the licence that removes that condition. The credit was removed from the page on
-request — **buy the licence at html5up.net to be in the clear.**
+the licence that removes that condition. The credit is in the footer — leave it
+there unless someone buys the licence at html5up.net.
 
 ## No signup form
 
@@ -61,8 +61,8 @@ the output will differ from the file that is being served today.
 
 Headings are Outfit 700 in small caps, body text is Manrope — the roles the
 identity package defines. Both are variable woff2 served from `assets/fonts/`,
-so there is no Google Fonts request. Font Awesome is gone, and so is the footer
-it drew icons for: the page has no links at all now.
+so there is no Google Fonts request. Font Awesome is gone; the footer holds
+nothing but the template credit, and the page has no other links.
 
 ## Domain
 
