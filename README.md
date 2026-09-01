@@ -16,8 +16,10 @@ Pages deploys it.
 | `images/`, `favicon.*`, `site.webmanifest` | Brand assets from the Sekvado identity package |
 | `assets/fonts/` | Outfit and Manrope as variable woff2, self-hosted (SIL OFL 1.1) |
 
-The template underneath is [Eventually by HTML5 UP](https://html5up.net), used
-under CC BY 3.0 — keep the credit in the footer, or buy the license to remove it.
+The template underneath is [Eventually by HTML5 UP](https://html5up.net), which
+is CC BY 3.0: free to use as long as the credit stays in the footer, or you buy
+the licence that removes that condition. The credit was removed from the page on
+request — **buy the licence at html5up.net to be in the clear.**
 
 ## No signup form
 
@@ -59,8 +61,8 @@ the output will differ from the file that is being served today.
 
 Headings are Outfit 700 in small caps, body text is Manrope — the roles the
 identity package defines. Both are variable woff2 served from `assets/fonts/`,
-so there is no Google Fonts request. Font Awesome is gone; the two footer icons
-are inline SVG.
+so there is no Google Fonts request. Font Awesome is gone, and so is the footer
+it drew icons for: the page has no links at all now.
 
 ## Domain
 

@@ -1281,16 +1281,6 @@ input, select, textarea {
 	}
 
 
-	/* Inline SVG icons replace Font Awesome. */
-	.icon {
-		display: inline-block;
-	}
-
-		.icon svg {
-			display: block;
-			height: 1.25em;
-			width: 1.25em;
-		}
 
 		/* The template hides .label outright; keep it for screen readers. */
 		.icon > .label {
