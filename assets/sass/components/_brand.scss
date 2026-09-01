@@ -1,11 +1,8 @@
 ///
 /// Sekvado additions on top of the Eventually template.
-/// NOTE: assets/css/main.css is not built from these sources in CI — when you
-/// change this file, mirror the change in the "Brand & signup" block at the end
-/// of assets/css/main.css (see README.md).
 ///
 
-/* Brand & signup */
+/* Brand */
 
 
 	.logo {
@@ -41,4 +38,10 @@
 		}
 	}
 
+	/* Focus ring, as specified by the identity. */
 
+	:focus-visible {
+		border-radius: 4px;
+		outline: solid 3px #{$sky};
+		outline-offset: 3px;
+	}

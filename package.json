@@ -1,0 +1,12 @@
+{
+  "name": "sekvado-site",
+  "private": true,
+  "description": "Build tooling for the Sekvado landing page",
+  "scripts": {
+    "build:css": "sass --no-source-map --style=expanded assets/sass/main.scss assets/css/main.css",
+    "watch:css": "sass --watch --no-source-map --style=expanded assets/sass/main.scss assets/css/main.css"
+  },
+  "devDependencies": {
+    "sass": "^1.103.0"
+  }
+}

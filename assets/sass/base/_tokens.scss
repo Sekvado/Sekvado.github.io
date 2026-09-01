@@ -1,0 +1,51 @@
+///
+/// Sekvado identity tokens as CSS custom properties, so anything built on top
+/// of this page can use the same names as the rest of the product.
+/// Values are defined once, in libs/_vars.scss.
+///
+
+/* Tokens */
+
+	:root {
+		--rose: #{$rose};
+		--rose-strong: #{$rose-strong};
+		--rose-soft: #{$rose-soft};
+		--rose-text: #{$rose-text};
+		--leaf: #{$leaf};
+		--leaf-strong: #{$leaf-strong};
+		--leaf-soft: #{$leaf-soft};
+		--leaf-text: #{$leaf-text};
+		--sky: #{$sky};
+		--sky-strong: #{$sky-strong};
+		--sky-soft: #{$sky-soft};
+		--sky-text: #{$sky-text};
+		--ink: #{$ink};
+		--ink-2: #{$ink-2};
+		--ink-3: #{$ink-3};
+		--line: #{$line};
+		--paper-2: #{$paper-2};
+		--paper: #{$paper};
+		--white: #{$white};
+		--radius-s: #{_size(border-radius)};
+		--radius-m: #{_size(border-radius-m)};
+		--radius-l: #{_size(border-radius-l)};
+		--radius-pill: #{_size(border-radius-pill)};
+		--font-display: #{_font(family-display)};
+		--font-body: #{_font(family)};
+
+		/* Colour roles — use these rather than the colour names.
+		   Rose = people and community, Leaf = activities and volunteering,
+		   Sky = organisation and finance. */
+		--mennesker: var(--rose);
+		--mennesker-strong: var(--rose-strong);
+		--mennesker-soft: var(--rose-soft);
+		--mennesker-text: var(--rose-text);
+		--aktiviteter: var(--leaf);
+		--aktiviteter-strong: var(--leaf-strong);
+		--aktiviteter-soft: var(--leaf-soft);
+		--aktiviteter-text: var(--leaf-text);
+		--organisation: var(--sky);
+		--organisation-strong: var(--sky-strong);
+		--organisation-soft: var(--sky-soft);
+		--organisation-text: var(--sky-text);
+	}

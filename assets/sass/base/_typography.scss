@@ -12,7 +12,7 @@
 		font-size: 16pt;
 		font-weight: _font(weight);
 		letter-spacing: _font(letter-spacing);
-		line-height: 1.65em;
+		line-height: 1.55em;
 
 		@include breakpoint('<=xlarge') {
 			font-size: 12pt;
@@ -66,11 +66,11 @@
 
 	h1, h2, h3, h4, h5, h6 {
 		color: _palette(fg-bold);
-		font-family: ('Outfit Variable', 'Outfit', sans-serif);
+		font-family: _font(family-display);
 		font-variant-caps: small-caps;
-		letter-spacing: 0.01em;
 		font-weight: _font(weight-bold);
-		line-height: 1em;
+		letter-spacing: 0.01em;
+		line-height: 1.05em;
 		margin: 0 0 (_size(element-margin) * 0.5) 0;
 
 		a {
@@ -81,32 +81,32 @@
 
 	h1 {
 		font-size: 2.5em;
-		line-height: 1.25em;
+		line-height: 1.05em;
 	}
 
 	h2 {
 		font-size: 1.75em;
-		line-height: 1.5em;
+		line-height: 1.1em;
 	}
 
 	h3 {
 		font-size: 1.35em;
-		line-height: 1.5em;
+		line-height: 1.1em;
 	}
 
 	h4 {
 		font-size: 1.1em;
-		line-height: 1.5em;
+		line-height: 1.1em;
 	}
 
 	h5 {
 		font-size: 0.9em;
-		line-height: 1.5em;
+		line-height: 1.1em;
 	}
 
 	h6 {
 		font-size: 0.7em;
-		line-height: 1.5em;
+		line-height: 1.1em;
 	}
 
 	sub {

@@ -41,28 +41,48 @@ git show a6f6f3d:privacy.html
 The template's `#signup-form` CSS rules are still in `assets/css/main.css`; they
 are dead but harmless, and left alone to keep the vendored template intact.
 
-## CSS caveat
+## Building the stylesheet
 
-`assets/css/main.css` is **not** generated from `assets/sass/` in CI, and the
-committed CSS predates the current sources. If you change SCSS, mirror the change
-in the matching block in `main.css` (the Sekvado additions are marked: the
-`@font-face` block at the top mirrors `components/_fonts.scss`, the block at the
-end mirrors `components/_brand.scss`).
-To move to a real build instead:
+`assets/css/main.css` is generated — **do not edit it by hand.** Change the SCSS
+in `assets/sass/` and rebuild:
 
 ```bash
-npx sass --no-source-map assets/sass/main.scss assets/css/main.css
+npm install && npm run build:css
 ```
 
-Check the result before committing — the sources use deprecated Sass functions and
-the output will differ from the file that is being served today.
+`npm run watch:css` rebuilds on save. Commit the generated `main.css` along with
+the sources; GitHub Pages serves the file as-is and runs no build of its own.
 
-## Typography and icons
+The sources use `@import` and a few deprecated Sass colour functions, so the
+build prints deprecation warnings. They are harmless with Dart Sass 1.x; they
+become errors in Sass 3, at which point the template needs migrating to `@use`.
 
-Headings are Outfit 700 in small caps, body text is Manrope — the roles the
-identity package defines. Both are variable woff2 served from `assets/fonts/`,
-so there is no Google Fonts request. Font Awesome is gone; the footer holds
-nothing but the template credit, and the page has no other links.
+## Visual identity
+
+The page follows the Sekvado identity package (`sekvado-identitet`, August 2026).
+
+**Colour.** The tokens live once, in `assets/sass/libs/_vars.scss`, and
+`assets/sass/base/_tokens.scss` re-publishes them as CSS custom properties
+(`--rose`, `--ink`, `--mennesker`, `--radius-l`, …) with the same names the rest
+of the product uses. The page is a dark surface — the identity's "stage.dark"
+treatment: Ink `#17181C` ground, Paper `#F7F7F4` text. Ink replaces black and
+Paper replaces white; neither `#000` nor `#fff` is used as a surface. The
+template's own teal accent is gone, replaced by Rose for primary accents, Leaf
+for positive and Rose strong for negative states. Colour roles are fixed: Rose =
+people and community, Leaf = activities and volunteering, Sky = organisation and
+finance. Do not swap them.
+
+**Type.** Outfit 700 in small caps with +1% tracking and 1.05 leading for
+headings; Manrope 400 at 1.55 leading for body copy; the hero paragraph is the
+lead style, 1.15em at 1.5. Both are variable woff2 in `assets/fonts/` under SIL
+OFL 1.1, so there is no Google Fonts request. Outfit is never used for running
+text, per the identity.
+
+**Focus.** 3px Sky outline at 3px offset, as the identity specifies.
+
+**Logo.** The stacked lockup with the white wordmark, on Ink — one of the three
+backgrounds the identity allows full colour on. Font Awesome is gone; the footer
+holds nothing but the template credit, and the page has no other links.
 
 ## Domain
 

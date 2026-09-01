@@ -1,3 +1,31 @@
+// Sekvado identity tokens.
+// Straight from 03-farver/tokens.css in the identity package — the values live
+// here, and base/_tokens.scss re-publishes them as CSS custom properties.
+
+	// Brand colours. Base = mark, large surfaces, decoration.
+	// -strong = white text on colour (WCAG AA 4.5:1). Never white text on a base.
+	$rose:				#E8316E;
+	$rose-strong:		#E3195D;
+	$rose-soft:			#FBE3EB;
+	$rose-text:			#B01B4E;
+	$leaf:				#4FB33A;
+	$leaf-strong:		#3A842B;
+	$leaf-soft:			#E3F3DE;
+	$leaf-text:			#2B7A1E;
+	$sky:				#1CA4E0;
+	$sky-strong:		#157DAB;
+	$sky-soft:			#DDF1FB;
+	$sky-text:			#0F6F9C;
+
+	// Neutrals. Ink replaces black, Paper replaces white on large surfaces.
+	$ink:				#17181C;
+	$ink-2:				#3A3C44;
+	$ink-3:				#6B6E78;
+	$line:				#D6D6D0;
+	$paper-2:			#ECECE8;
+	$paper:				#F7F7F4;
+	$white:				#FFFFFF;
+
 // Misc.
 	$misc: (
 	);
@@ -13,7 +41,10 @@
 
 // Size.
 	$size: (
-		border-radius:		6px,
+		border-radius:		6px,		// --radius-s
+		border-radius-m:	12px,
+		border-radius-l:	20px,
+		border-radius-pill:	999px,
 		border-width:		2px,
 		element-height:		2.75em,
 		element-margin:		2em
@@ -21,7 +52,8 @@
 
 // Font.
 	$font: (
-		family:				('Manrope Variable', 'Manrope', sans-serif),
+		family:				('Manrope Variable', 'Manrope', system-ui, sans-serif),
+		family-display:		('Outfit Variable', 'Outfit', 'Manrope Variable', 'Manrope', sans-serif),
 		family-fixed:		('Courier New', monospace),
 		weight:				400,
 		weight-bold:		700,
@@ -29,31 +61,33 @@
 	);
 
 // Palette.
+// This page is a dark surface: Ink ground, Paper text — the "stage.dark"
+// treatment from the identity's brand board.
 	$palette: (
-		bg:					#000,
-		fg:					rgba(255,255,255,0.75),
-		fg-bold:			#fff,
-		fg-light:			rgba(255,255,255,0.5),
-		border:				rgba(255,255,255,0.35),
-		border-bg:			rgba(255,255,255,0.125),
-		border2:			rgba(255,255,255,0.25),
+		bg:					$ink,
+		fg:					$paper,
+		fg-bold:			$white,
+		fg-light:			rgba(247, 247, 244, 0.55),
+		border:				rgba(247, 247, 244, 0.35),
+		border-bg:			rgba(247, 247, 244, 0.125),
+		border2:			rgba(247, 247, 244, 0.25),
 
 		accent: (
-			bg:				#1cb495,
-			fg:				mix(#1cb495, #ffffff, 25%),
-			fg-bold:		#ffffff,
-			fg-light:		mix(#1cb495, #ffffff, 40%),
-			border:			rgba(255,255,255,0.25),
-			border-bg:		rgba(255,255,255,0.075),
+			bg:				$rose,
+			fg:				mix($rose, $white, 25%),
+			fg-bold:		$white,
+			fg-light:		mix($rose, $white, 40%),
+			border:			rgba(247, 247, 244, 0.25),
+			border-bg:		rgba(247, 247, 244, 0.075),
 		),
 
 		positive: (
-			bg:				#1cb495,
-			fg:				#ffffff
+			bg:				$leaf-strong,
+			fg:				$white
 		),
 
 		negative: (
-			bg:				#ff2361,
-			fg:				#ffffff
+			bg:				$rose-strong,
+			fg:				$white
 		)
 	);
