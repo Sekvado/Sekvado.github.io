@@ -9,35 +9,33 @@ Pages deploys it.
 | Path | What it is |
 | --- | --- |
 | `index.html` | The landing page |
-| `privacy.html` | Privacy notice for the signup list — **still contains `[ ]` placeholders** |
 | `404.html` | Not-found page |
 | `assets/css/main.css` | The stylesheet that is actually served |
 | `assets/sass/` | SCSS sources for the same stylesheet (see the caveat below) |
-| `assets/js/main.js` | Background slideshow + signup form submission |
+| `assets/js/main.js` | Background slideshow |
 | `images/`, `favicon.*`, `site.webmanifest` | Brand assets from the Sekvado identity package |
 
 The template underneath is [Eventually by HTML5 UP](https://html5up.net), used
 under CC BY 3.0 — keep the credit in the footer, or buy the license to remove it.
 
-## Turning on the signup form
+## No signup form
 
-The form does **not** store addresses yet. `index.html` has
-`REPLACE_WITH_SIGNUP_ENDPOINT` in two places on the `<form>` element:
+The page collects nothing: no form, no cookies, no analytics, no third-party
+requests except the Google Fonts stylesheet in `main.css`. That is why there is
+no privacy notice — if you bring a signup form back, you need one again, plus a
+consent checkbox and a data processing agreement with the mailing-list provider.
 
-```html
-<form id="signup-form" method="post" action="…" data-endpoint="…">
+A working form (background POST to a configurable endpoint, no-JS fallback,
+consent checkbox, aria-live status) and a privacy-notice draft are in the git
+history if you want them back:
+
+```bash
+git show a6f6f3d:index.html
+git show a6f6f3d:privacy.html
 ```
 
-Put your mailing-list provider's POST endpoint in both (Buttondown, Formspree,
-ConvertKit and MailerLite all accept a plain form POST with an `email` field).
-`data-endpoint` is used for the background submission; `action` is the fallback
-for browsers without `fetch`, and for anyone with JavaScript disabled.
-
-Until it is configured the form tells the visitor that signup isn't live rather
-than showing a fake "Thank you!" — do not remove that guard by faking success.
-
-Whoever you pick becomes a GDPR data processor: sign their DPA and fill in
-`privacy.html` before the form goes live.
+The template's `#signup-form` CSS rules are still in `assets/css/main.css`; they
+are dead but harmless, and left alone to keep the vendored template intact.
 
 ## CSS caveat
 

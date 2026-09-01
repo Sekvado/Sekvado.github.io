@@ -7,16 +7,6 @@
 
 /* Brand & signup */
 
-	.screen-reader-text {
-		border: 0;
-		clip: rect(0 0 0 0);
-		clip-path: inset(50%);
-		height: 1px;
-		overflow: hidden;
-		position: absolute;
-		white-space: nowrap;
-		width: 1px;
-	}
 
 	#header {
 		.logo {
@@ -32,16 +22,6 @@
 		}
 	}
 
-	.consent {
-		color: _palette(fg-light);
-		font-size: 0.9em;
-		margin: (_size(element-margin) * 0.6) 0 0 0;
-		max-width: 34em;
-
-		label {
-			line-height: 1.5em;
-		}
-	}
 
 	#footer {
 		.copyright {

@@ -1203,16 +1203,6 @@ input, select, textarea {
 		}
 /* Brand & signup (Sekvado additions — mirror of assets/sass/components/_brand.scss) */
 
-	.screen-reader-text {
-		border: 0;
-		clip: rect(0 0 0 0);
-		clip-path: inset(50%);
-		height: 1px;
-		overflow: hidden;
-		position: absolute;
-		white-space: nowrap;
-		width: 1px;
-	}
 
 	#header .logo {
 		display: block;
@@ -1230,16 +1220,7 @@ input, select, textarea {
 
 		}
 
-	.consent {
-		color: rgba(255, 255, 255, 0.5);
-		font-size: 0.9em;
-		margin: 1.2em 0 0 0;
-		max-width: 34em;
-	}
 
-		.consent label {
-			line-height: 1.5em;
-		}
 
 	#footer .copyright a {
 		border-bottom: dotted 1px rgba(255, 255, 255, 0.35);
