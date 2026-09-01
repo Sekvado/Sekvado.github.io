@@ -1243,20 +1243,55 @@ input, select, textarea {
 /* Brand & signup (Sekvado additions — mirror of assets/sass/components/_brand.scss) */
 
 
-	#header .logo {
+	.logo {
 		display: block;
 		height: auto;
-		margin: 0 0 1.5em 0;
-		max-width: 70vw;
-		width: 15em;
+		left: 50%;
+		max-width: 60vw;
+		position: absolute;
+		top: 3em;
+		-moz-transform: translateX(-50%);
+		-webkit-transform: translateX(-50%);
+		-ms-transform: translateX(-50%);
+		transform: translateX(-50%);
+		width: 11em;
+		z-index: 2;
 	}
 
 		@media screen and (max-width: 736px) {
 
-			#header .logo {
-				width: 11em;
+			.logo {
+				top: 2em;
+				width: 8.5em;
 			}
 
+		}
+
+		/* Short viewports: back into the flow, so it can't sit on the text. */
+		@media screen and (max-height: 640px) {
+
+			.logo {
+				left: auto;
+				margin: 0 auto 1.5em auto;
+				position: relative;
+				top: auto;
+				-moz-transform: none;
+				-webkit-transform: none;
+				-ms-transform: none;
+				transform: none;
+			}
+
+		}
+
+		/* When the logo is a link, the anchor is the positioned box. */
+		a.logo {
+			border-bottom: none;
+		}
+
+		.logo img {
+			display: block;
+			height: auto;
+			width: 100%;
 		}
 
 
