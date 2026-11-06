@@ -1,0 +1,435 @@
+///
+/// Sekvado additions: the newsletter archive (/nyhedsbreve/ and /nyhedsbreve/vis/, APP-020).
+/// Scoped to body.archive so the landing page and 404 are untouched.
+///
+
+/* Archive */
+
+	body.archive {
+		display: block;
+		height: auto;
+		min-height: 100%;
+		position: relative;
+
+		.archive-bg {
+			background: url('../../images/Riding_on_road_with_trees_1920x.jpg') center / cover;
+			height: 100vh;
+			left: 0;
+			-webkit-mask-image: linear-gradient(#000 55%, transparent);
+			mask-image: linear-gradient(#000 55%, transparent);
+			opacity: 0.25;
+			pointer-events: none;
+			position: absolute;
+			right: 0;
+			top: 0;
+			z-index: 1;
+		}
+
+		.logo {
+			width: 7em;
+
+			@media (max-width: 736px) {
+				width: 6em;
+			}
+		}
+	}
+
+	.archive-wrap {
+		margin: 0 auto;
+		max-width: 46em;
+
+		> h1 {
+			font-size: 3.25em;
+			margin: 0 0 0.55em 0;
+
+			@media (max-width: 736px) {
+				font-size: 2em;
+			}
+		}
+
+		h1.subj {
+			font-size: 2.5em;
+			line-height: 1.08em;
+			margin: 0 0 0.4em 0;
+
+			@media (max-width: 736px) {
+				font-size: 1.9em;
+			}
+		}
+
+		.top {
+			font-size: 0.95em;
+			margin: 0 0 1.25em 0;
+
+			a {
+				color: inherit;
+
+				&:hover {
+					color: $rose !important;
+				}
+			}
+		}
+
+		.lead {
+			font-size: 1.15em;
+			line-height: 1.5em;
+			margin: 0 0 2em 0;
+
+			@media (max-width: 736px) {
+				font-size: 1em;
+			}
+		}
+	}
+
+	.sr {
+		clip: rect(0 0 0 0);
+		height: 1px;
+		overflow: hidden;
+		position: absolute;
+		white-space: nowrap;
+		width: 1px;
+	}
+
+	/* The list */
+
+	.archive-list li {
+		padding-left: 0;
+	}
+
+	.archive-list {
+		display: grid;
+		gap: 1em;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.archive-card {
+		align-items: start;
+		background: rgba(247, 247, 244, 0.06);
+		border: 1px solid _palette(border-bg);
+		border-radius: var(--radius-m);
+		display: grid;
+		gap: 1.25em;
+		grid-template-columns: 8em minmax(0, 1fr);
+		padding: 1em;
+
+		.th {
+			aspect-ratio: 4 / 3;
+			background: rgba(247, 247, 244, 0.08);
+			border-radius: var(--radius-s);
+			display: block;
+			height: auto;
+			object-fit: cover;
+			width: 8em;
+		}
+
+		h2 {
+			font-size: 1.35em;
+			line-height: 1.15em;
+			margin: 0 0 0.35em 0;
+
+			a:hover {
+				color: $rose;
+			}
+		}
+
+		h2 a {
+			color: inherit;
+		}
+
+		.d {
+			color: _palette(fg-light);
+			display: block;
+			font-size: 0.9em;
+			margin: 0 0 0.3em 0;
+		}
+
+		p {
+			color: rgba(247, 247, 244, 0.85);
+			margin: 0;
+		}
+
+		@media (max-width: 736px) {
+			gap: 0.75em;
+			grid-template-columns: minmax(0, 1fr);
+
+			.th {
+				aspect-ratio: 16 / 9;
+				width: 100%;
+
+				&.none {
+					display: none;
+				}
+			}
+		}
+	}
+
+	.archive-skel {
+		animation: archive-skel 1.4s linear infinite;
+		background: linear-gradient(90deg, rgba(247, 247, 244, 0.05), rgba(247, 247, 244, 0.12), rgba(247, 247, 244, 0.05));
+		background-size: 200% 100%;
+		border-radius: var(--radius-m);
+		height: 7.5em;
+
+		@media (prefers-reduced-motion: reduce) {
+			animation: none;
+		}
+	}
+
+	@keyframes archive-skel {
+		to {
+			background-position: -200% 0;
+		}
+	}
+
+	/* Messages */
+
+	.msg {
+		background: rgba(247, 247, 244, 0.05);
+		border: 1px solid _palette(border-bg);
+		border-radius: var(--radius-m);
+		padding: 2em 1.5em;
+		text-align: center;
+
+		h1, h2 {
+			font-size: 1.75em;
+			margin: 0 0 0.5em 0;
+		}
+
+		p {
+			color: rgba(247, 247, 244, 0.85);
+			margin: 0 0 1em 0;
+
+			&:last-child {
+				margin: 0;
+			}
+		}
+	}
+
+	/* The template's button rules (rose fill, white !important text, fixed height) are reset here. */
+	.archive-button,
+	.lang button {
+		align-items: center;
+		background-color: transparent;
+		border: solid 2px _palette(border);
+		border-radius: var(--radius-s);
+		color: var(--paper) !important;
+		cursor: pointer;
+		display: inline-flex;
+		height: auto;
+		justify-content: center;
+		line-height: 1;
+		white-space: normal;
+	}
+
+	.archive-button {
+		border-bottom: solid 2px _palette(border);
+		font: 700 1em/1 var(--font-body);
+		min-height: 2.75em;
+		padding: 0 1.5em;
+
+		&:hover,
+		&:active {
+			background-color: transparent;
+			border-color: $rose;
+			color: $rose !important;
+		}
+	}
+
+	/* One newsletter */
+
+	.lang {
+		display: inline-flex;
+		gap: 0.4em;
+		margin: 0 0 1.25em 0;
+
+		button {
+			border-width: 1px;
+			border-radius: var(--radius-pill);
+			font: 600 0.9em/1 var(--font-body);
+			min-height: 2.5em;
+			padding: 0.3em 1em;
+
+			&:hover,
+			&:active {
+				background-color: transparent;
+			}
+
+			&[aria-pressed="true"],
+			&[aria-pressed="true"]:hover {
+				background-color: var(--paper);
+				border-color: var(--paper);
+				color: var(--ink) !important;
+			}
+		}
+	}
+
+	.meta {
+		align-items: center;
+		color: _palette(fg-light);
+		display: flex;
+		flex-wrap: wrap;
+		font-size: 0.95em;
+		gap: 0.4em 0.75em;
+		margin: 0 0 1.5em 0;
+	}
+
+	.pill {
+		border: 1px solid _palette(border);
+		border-radius: var(--radius-pill);
+		color: var(--paper);
+		display: inline-block;
+		font-size: 0.85em;
+		line-height: 1.7em;
+		padding: 0 0.7em;
+	}
+
+	.letter {
+		background: var(--paper);
+		border-radius: var(--radius-l);
+		color: var(--ink);
+		display: grid;
+		font-size: 1em;
+		gap: 1.1em;
+		line-height: 1.6em;
+		padding: 2.25em;
+
+		@media (max-width: 736px) {
+			border-radius: var(--radius-m);
+			padding: 1.25em;
+		}
+
+		b, strong {
+			color: var(--ink);
+		}
+
+		p {
+			margin: 0;
+		}
+
+		ul, ol {
+			margin: 0;
+			padding-left: 1.25em;
+
+			li {
+				padding-left: 0;
+			}
+		}
+
+		a {
+			border-bottom: solid 1px currentColor;
+			color: var(--rose-text);
+
+			&:hover {
+				color: var(--ink) !important;
+			}
+		}
+
+		h2, h3 {
+			color: var(--ink);
+			font-variant-caps: normal;
+			letter-spacing: 0;
+			line-height: 1.2em;
+			margin: 0;
+		}
+
+		h2 {
+			font-size: 1.5em;
+		}
+
+		h3 {
+			font-size: 1.15em;
+		}
+
+		figure {
+			display: grid;
+			gap: 0.4em;
+			margin: 0;
+
+			img {
+				border-radius: var(--radius-s);
+				display: block;
+				height: auto;
+				max-width: 100%;
+				width: 100%;
+			}
+
+			&.size-three-quarters img { width: 75%; }
+			&.size-half img { width: 50%; }
+			&.size-third img { width: 33%; }
+			&.align-center img { margin-left: auto; margin-right: auto; }
+			&.align-right img { margin-left: auto; }
+			&.ratio-wide img { aspect-ratio: 21 / 9; object-fit: cover; }
+			&.ratio-landscape img { aspect-ratio: 4 / 3; object-fit: cover; }
+			&.ratio-square img { aspect-ratio: 1; object-fit: cover; }
+			&.ratio-portrait img { aspect-ratio: 3 / 4; object-fit: cover; }
+		}
+
+		figcaption {
+			color: var(--ink-3);
+			font-size: 0.85em;
+		}
+
+		hr {
+			border: 0;
+			border-top: 1px solid var(--line);
+			margin: 0.25em 0;
+			width: 100%;
+		}
+
+		.cols {
+			display: grid;
+			gap: 1.25em;
+			grid-template-columns: 1fr;
+
+			@media (min-width: 768px) {
+				grid-template-columns: 1fr 1fr;
+
+				&.narrow-wide {
+					grid-template-columns: 1fr 2fr;
+				}
+			}
+		}
+
+		.col {
+			align-content: start;
+			display: grid;
+			gap: 0.6em;
+			min-width: 0;
+		}
+
+		a.btn {
+			align-items: center;
+			background: var(--ink);
+			border: 0;
+			border-radius: var(--radius-s);
+			color: var(--paper);
+			display: inline-flex;
+			font-weight: 700;
+			justify-self: start;
+			min-height: 2.75em;
+			padding: 0 1.4em;
+
+			&:hover {
+				background: var(--ink-2);
+				color: var(--paper) !important;
+			}
+		}
+	}
+
+	.closing {
+		color: _palette(fg-light);
+		font-size: 0.95em;
+		margin: 1.5em 0 0 0;
+	}
+
+	/* The footer, in flow under the content (the landing page's "short" variant). */
+
+	body.archive #footer {
+		bottom: auto;
+		left: auto;
+		margin: 4em 0 0 0;
+		max-width: 46em;
+		position: relative;
+	}
