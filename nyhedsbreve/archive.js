@@ -7,7 +7,7 @@
 
   var BASE = String(window.SEKVADO_API_BASE || '').replace(/\/+$/, '');
   var root = document.getElementById('archive-body');
-  var isView = location.pathname.replace(/\/+$/, '').slice(-4) === '/vis';
+  var isView = /\/vis(\/(index\.html)?)?$/.test(location.pathname);
   var UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
   function el(tag, attrs, kids) {
